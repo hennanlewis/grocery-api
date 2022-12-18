@@ -1,6 +1,6 @@
 # Grocery Shop API
 
-Este projeto é uma API que oferece funcionalidades para gerenciamento através de rotas de um e-commerce simples. Algumas dessas funções são a listagem de produtos, adcionar itens ao carrinho, gerenciamento de estoque e autenticação de usuário.
+API de e-commerce simples que oferece gerenciamento de funcionalidades através de rotas. Algumas dessas funções são a listagem de produtos, adcionar itens ao carrinho, gerenciamento de estoque e autenticação de usuário.
 
 ## Tecnologias utilizadas
 - Express.js
