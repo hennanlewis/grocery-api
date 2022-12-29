@@ -29,8 +29,6 @@ Métodos disponíveis: `DELETE`.
 
 Este método `DELETE` remove do carrinho o produto com o ID igual o parâmetro (o usuário precisa estar autenticado), ou seja, ao acessar `/cart/1234`, remove o produto com o ID "1234".
 
-<br>
-
 # Rotas de categorias
 Para acessar os dados das categorias dos produtos, utilize a seguinte rota:
 
@@ -67,8 +65,6 @@ Este método `PUT` altera uma categoria de produto. É necessário enviar o nome
 ```
 
 Este método `DELETE` remove a categoria com o ID do parâmetro (o usuário precisa estar autenticado), ou seja, ao acessar `/category/1234`, remove a categoria com o ID "1234".
-
-<br>
 
 # Rotas de produtos
 Para acessar os dados dos produtos, utilize a seguinte rota:
@@ -119,8 +115,6 @@ Este método `PUT` atualiza um produto. É necessário enviar o código de barra
 
 Este método `DELETE` remove o produto com o ID igual o parâmetro (o usuário precisa estar autenticado), ou seja, ao acessar `/products/1234`, remove o produto com o ID "1234".
 
-<br>
-
 # Rotas de estoque
 Para acessar os produtos em estoque, utilize a seguinte rota:
 
@@ -163,8 +157,6 @@ Métodos disponíveis: `GET`.
 
 Este método `GET` retorna do estoque o produto com o ID do parâmetro, ou seja, ao acessar `/inventory/product/1234`, retorna do estoque o produto com o ID "1234".
 
-<br>
-
 # Rotas de autenticação
 Para cadastrar um usuário, utilize a seguinte rota:
 
@@ -201,8 +193,6 @@ Este método `POST` cadastra um novo usuário. É necessário enviar o email e a
 	"password": "1234",
 }
 ```
-
-<br>
 
 # Observações
 Nem todas as rotas possuem todos os métodos planejados, então ainda falta terminar alguns detalhes.

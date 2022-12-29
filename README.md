@@ -10,8 +10,6 @@ API de e-commerce simples que oferece gerenciamento de funcionalidades através 
 - Bcrypt
 
 
-<br>
-
 # Descrição do projeto
 O modo de divisão e separação de responsabilidades em cada parte do código é feita basicamente através de Controllers, Services e Models.
 
@@ -22,8 +20,6 @@ O Sistema de Gerenciamento de Banco de Dados escolhido foi o MongoDB pois consid
 Em relação as regras de negócio, todas estão apenas nos Services, então assim como as outras duas partes anteriores, caso seja necessário a mudança apenas de tais regras, as modificações acontecem apenas no Service respectivo para que várias partes não sejam modificadas.
 
 Existe uma boa discussão em torno de onde as regras de negócio devam ficar por questão de nomenclatura ou alguns outros pormenores, porém, para o projeto no estado atual, tentar seguir outas nomenclatura ou sugestões de organização trariam mais complexidade que o realmente necessário.
-
-<br>
 
 # Instalação e execução
 
@@ -55,8 +51,6 @@ npm run dev
 
 3. Para parar a aplicação, pressione `ctrl+c` no terminal de execução do projeto.
 
-<br>
-
 # Autenticação
 
 Algumas das funções da API são acessadas somente através da autenticação de usuário, assim como se deve esperar de um sistema de e-commerce online.
@@ -76,13 +70,9 @@ Agora falando do Bcrypt, ele foi utilizado pelos seguintes motivos:
 - Ele é lento para calcular o hash de uma senha, o que torna mais difícil para um atacante descobrir uma senha usando um ataque de força bruta;
 - Ele permite que você especifique o nível de "custo" para calcular o hash, o que aumenta a segurança ao aumentar o tempo de processamento necessário para calcular o hash.
 
-<br>
-
 # Endpoints
 
 A API tem algumas rotas disponíveis. São elas as seguintes:
-
-<br>
 
 ## Rota de carrinho
 ```shell
