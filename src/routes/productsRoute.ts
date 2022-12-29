@@ -17,6 +17,13 @@ productsRoute.post(
 
 productsRoute.get("/products/:id", ProductsController.getItemByID, routesErrors)
 
+productsRoute.put(
+	"/products/:id",
+	authentication,
+	ProductsController.updateItem,
+	routesErrors
+)
+
 productsRoute.delete(
 	"/products/:id",
 	authentication,

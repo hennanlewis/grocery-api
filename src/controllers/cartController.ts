@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from "express"
 import {
+	deleteCartItemService,
 	deleteCartService,
 	getCartItemsService,
 	updateCartService,
@@ -33,9 +34,20 @@ const deleteCart = (
 	res: Response,
 	next: NextFunction
 ) => {
-	deleteCartService(payload, req.body)
+	deleteCartService(payload)
 		.then((data) => res.json(data))
 		.catch(next)
 }
 
-export default { getItem, updateItem, deleteCart }
+const deleteCartItem = (
+	payload: PayloadData,
+	req: Request,
+	res: Response,
+	next: NextFunction
+) => {
+	deleteCartItemService(payload, req.params.productId)
+		.then((data) => res.json(data))
+		.catch(next)
+}
+
+export default { getItem, updateItem, deleteCart, deleteCartItem }

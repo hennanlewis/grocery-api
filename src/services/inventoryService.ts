@@ -1,3 +1,4 @@
+import { errorCreator } from "../helpers/errorCreator"
 import {
 	deleteInventoryItemModel,
 	getInventoryItemsModel,
@@ -47,11 +48,8 @@ export const insertInventoryItemService = async (
 export const deleteInventoryItemService = async (id: string) => {
 	const result = await deleteInventoryItemModel(id)
 
-	if (!result) {
-		const error = new Error("Produto não encontrado")
-		error.name = "404"
-		return Promise.reject(error)
-	}
+	if (!result)
+		return Promise.reject(errorCreator("404", "Produto não encontrado"))
 
 	return result
 }

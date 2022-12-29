@@ -1,3 +1,4 @@
+import { ObjectId } from "mongodb"
 import { selectCollection } from "../config/db"
 import { deleteCartService } from "../services/cartService"
 
@@ -100,6 +101,15 @@ export const updateCartModel = async (
 	return updatedCart
 }
 
+export const deleteCartItemModel = async (email: string, productId: string) => {
+	const cartCollection = selectCollection("cart")
+	return await cartCollection.updateOne(
+		{ email, "cartItems.productId": productId },
+		{ $pull: { cartItems: { productId } } }
+	)
+}
+
 export const deleteCartModel = async (email: string) => {
-	return null
+	const cartCollection = selectCollection("cart")
+	return await cartCollection.deleteOne({ email })
 }

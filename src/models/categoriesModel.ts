@@ -9,16 +9,23 @@ export const getCategoryItemsModel = async () => {
 
 export const insertCategoryItemModel = async (category: CategoryData) => {
 	const categoriesCollection = selectCollection("categories")
-	await categoriesCollection.insertOne(category)
-	return category
+	return await categoriesCollection.insertOne(category)
+}
+
+export const updateCategoryItemModel = async (
+	id: string,
+	category: CategoryData
+) => {
+	const categoriesCollection = selectCollection("categories")
+	return await categoriesCollection.updateOne(
+		{
+			_id: new ObjectId(id),
+		},
+		{ $set: category }
+	)
 }
 
 export const deleteCategoryItemModel = async (id: string) => {
 	const categoriesCollection = selectCollection("categories")
-	const result = await categoriesCollection.deleteOne({ _id: new ObjectId(id) })
-	const deletedCount = result.deletedCount
-
-	if (deletedCount !== 1) return []
-
-	return { message: "Categoria deletada com sucesso" }
+	return await categoriesCollection.deleteOne({ _id: new ObjectId(id) })
 }

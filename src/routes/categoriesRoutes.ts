@@ -15,6 +15,13 @@ categoriesRoute.post(
 	routesErrors
 )
 
+categoriesRoute.put(
+	"/categories/:id",
+	authentication,
+	CategoriesController.updateItem,
+	routesErrors
+)
+
 categoriesRoute.delete(
 	"/categories/:id",
 	authentication,

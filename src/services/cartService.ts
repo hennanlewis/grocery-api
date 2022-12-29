@@ -1,5 +1,7 @@
+import { errorCreator } from "../helpers/errorCreator"
 import {
 	deleteCartModel,
+	deleteCartItemModel,
 	getCartItemsModel,
 	updateCartModel,
 } from "../models/cartModel"
@@ -27,9 +29,28 @@ export const updateCartService = async (
 	return await updateCartModel(payload.email, cartItem)
 }
 
-export const deleteCartService = async (
+export const deleteCartService = async (payload: PayloadData) => {
+	const result = await deleteCartModel(payload.email)
+	const { acknowledged: isSuccessfull, deletedCount: deletedCounter } = result
+
+	if (!isSuccessfull)
+		return Promise.reject(new Error("Ocorreu um erro na requisição"))
+
+	if (deletedCounter == 0)
+		return Promise.reject(errorCreator("404", "carrinho não encontrado"))
+
+	return { message: "Carrinho limpo com sucesso" }
+}
+
+export const deleteCartItemService = async (
 	payload: PayloadData,
-	cartItem: CartProductData
+	productId: string
 ) => {
-	return await deleteCartModel(payload.email)
+	const result = await deleteCartItemModel(payload.email, productId)
+	const { matchedCount } = result
+
+	if (matchedCount == 0)
+		return Promise.reject(errorCreator("404", "Produto não encontrado"))
+
+	return { message: "Produto removido com sucesso" }
 }

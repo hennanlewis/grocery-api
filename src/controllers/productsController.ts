@@ -5,6 +5,7 @@ import {
 	getProductsByIDService,
 	insertProductService,
 	deleteProductService,
+	updateProductService,
 } from "../services/productsService"
 
 const getItem = (req: Request, res: Response, next: NextFunction) => {
@@ -30,6 +31,17 @@ const insertItem = (
 		.catch(next)
 }
 
+const updateItem = (
+	payload: PayloadData,
+	req: Request,
+	res: Response,
+	next: NextFunction
+) => {
+	updateProductService(req.params.id, req.body)
+		.then((data) => res.json(data))
+		.catch(next)
+}
+
 const deleteItem = (
 	payload: PayloadData,
 	req: Request,
@@ -41,4 +53,4 @@ const deleteItem = (
 		.catch(next)
 }
 
-export default { getItem, getItemByID, insertItem, deleteItem }
+export default { getItem, getItemByID, insertItem, updateItem, deleteItem }

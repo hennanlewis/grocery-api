@@ -1,13 +1,14 @@
 import { NextFunction, Request, Response } from "express"
 
 import {
-	deleteCategoryItemService,
-	getCategoryItemsService,
-	insertCategoryItemsService,
+	deleteCategoryService,
+	updateCategoryService,
+	getCategoryService,
+	insertCategoryService,
 } from "../services/categoriesService"
 
 const getItem = (req: Request, res: Response, next: NextFunction) => {
-	getCategoryItemsService()
+	getCategoryService()
 		.then((data) => res.json(data))
 		.catch(next)
 }
@@ -18,7 +19,18 @@ const insertItem = (
 	res: Response,
 	next: NextFunction
 ) => {
-	insertCategoryItemsService(req.body)
+	insertCategoryService(req.body)
+		.then((data) => res.status(201).json(data))
+		.catch(next)
+}
+
+const updateItem = (
+	payload: PayloadData,
+	req: Request,
+	res: Response,
+	next: NextFunction
+) => {
+	updateCategoryService(req.params.id, req.body)
 		.then((data) => res.status(201).json(data))
 		.catch(next)
 }
@@ -29,9 +41,9 @@ const deleteItem = (
 	res: Response,
 	next: NextFunction
 ) => {
-	deleteCategoryItemService(req.params.id)
+	deleteCategoryService(req.params.id)
 		.then((data) => res.status(201).json(data))
 		.catch(next)
 }
 
-export default { getItem, insertItem, deleteItem }
+export default { getItem, insertItem, updateItem, deleteItem }

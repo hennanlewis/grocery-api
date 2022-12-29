@@ -14,3 +14,17 @@ cartRoutes.put(
 	CartsController.updateItem,
 	routesErrors
 )
+
+cartRoutes.delete(
+	"/cart",
+	authentication,
+	CartsController.deleteCart,
+	routesErrors
+)
+
+cartRoutes.delete(
+	"/cart/:productId",
+	authentication,
+	CartsController.deleteCartItem,
+	routesErrors
+)

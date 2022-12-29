@@ -4,11 +4,7 @@ import { collectionData, selectCollection } from "../config/db"
 
 export const getProductsModel = async (id?: string) => {
 	const productsCollection = selectCollection("products")
-	if ((await productsCollection.countDocuments()) == 0) return null
-
-	const products = await collectionData<ProductsData>(productsCollection, id)
-
-	return products
+	return await collectionData<ProductsData>(productsCollection, id)
 }
 
 export const insertProductModel = async (product: ProductsData) => {
@@ -17,12 +13,18 @@ export const insertProductModel = async (product: ProductsData) => {
 	return product
 }
 
+export const updateProductModel = async (
+	productId: string,
+	product: ProductsData
+) => {
+	const productsCollection = selectCollection("products")
+	return await productsCollection.updateOne(
+		{ _id: new ObjectId(productId) },
+		{ $set: { ...product } }
+	)
+}
+
 export const deleteProductModel = async (id: string) => {
 	const productsCollection = selectCollection("products")
-	const result = await productsCollection.deleteOne({ _id: new ObjectId(id) })
-	const deletedCount = result.deletedCount
-
-	if (deletedCount !== 1) return []
-
-	return { message: "Produto deletado com sucesso" }
+	return await productsCollection.deleteOne({ _id: new ObjectId(id) })
 }
